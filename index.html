@@ -9,23 +9,18 @@
             margin: 0;
             padding: 0;
             width: 100%;
-        }
-
-        .video-wrapper {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 比例 */
-            height: 0;
-            overflow: hidden;
             background: #000;
         }
 
-        .video-container iframe,
-        .video-container video {
+        .notion-embed {
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+        }
+
+        .notion-embed iframe,
+        .notion-embed video {
             position: absolute;
             top: 0;
             left: 0;
@@ -36,13 +31,11 @@
     </style>
 </head>
 <body>
-    <div class="video-wrapper">
-        <div id="player-container" class="video-container">
-            <video controls muted>
-                <source src="" type="video/mp4">
-                您的浏览器不支持视频播放。
-            </video>
-        </div>
+    <div id="player-container" class="notion-embed">
+        <video controls muted>
+            <source src="" type="video/mp4">
+            您的浏览器不支持视频播放。
+        </video>
     </div>
 
     <script>
@@ -58,6 +51,7 @@
             document.getElementById('player-container').innerHTML = `
                 <iframe 
                     src="https://www.youtube.com/embed/${config.youtubeId}?autoplay=1&mute=1"
+                    frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
@@ -69,9 +63,7 @@
                 <iframe 
                     src="https://player.bilibili.com/player.html?bvid=${config.bilibiliId}&page=1&autoplay=1"
                     scrolling="no"
-                    border="0"
-                    frameborder="no"
-                    framespacing="0"
+                    frameborder="0"
                     allowfullscreen>
                 </iframe>
             `;
