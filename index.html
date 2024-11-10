@@ -50,9 +50,9 @@
         function loadYouTubePlayer() {
             document.getElementById('player-container').innerHTML = `
                 <iframe 
-                    src="https://www.youtube.com/embed/${config.youtubeId}?autoplay=1&mute=1"
+                    src="https://www.youtube.com/embed/${config.youtubeId}"
                     frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
             `;
@@ -61,7 +61,7 @@
         function loadBilibiliPlayer() {
             document.getElementById('player-container').innerHTML = `
                 <iframe 
-                    src="https://player.bilibili.com/player.html?bvid=${config.bilibiliId}&page=1&autoplay=1"
+                    src="https://player.bilibili.com/player.html?bvid=${config.bilibiliId}&page=1"
                     scrolling="no"
                     frameborder="0"
                     allowfullscreen>
@@ -74,7 +74,7 @@
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), config.timeout);
                 
-                const response = await fetch(`https://www.youtube.com/embed/${config.youtubeId}?autoplay=1`, {
+                const response = await fetch(`https://www.youtube.com/embed/${config.youtubeId}`, {
                     mode: 'no-cors',
                     signal: controller.signal
                 });
